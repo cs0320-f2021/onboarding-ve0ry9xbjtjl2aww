@@ -16,18 +16,16 @@ public class Stars {
       String line;
       List<List<String>> workingList = new ArrayList<>();
       while ((line = br.readLine()) != null) {
-        try {
-          String[] headers = line.split(",");
-          if (headers.length == 5) {
-            if (headers[0].equals("StarID") && headers[1].equals("ProperName")
-                && headers[2].equals("X") && headers[3].equals("Y") && headers[4].equals("Z")) {
-              workingList.add(Arrays.asList(headers));
-            }
-          } else {
-            throw new FileNotFoundException("File does not conform with format");
-          }
+        String[] headers = line.split(",");
+        if (headers.length == 5) {
+//          if (headers[0].equals("StarID") && headers[1].equals("ProperName")
+//                && headers[2].equals("X") && headers[3].equals("Y") && headers[4].equals("Z")) {
+          workingList.add(Arrays.asList(headers));
+        } else {
+          throw new FileNotFoundException("File does not conform with format");
         }
         this.strList = workingList;
+        System.out.println(workingList);
       }
     } catch (IOException e) {
       e.printStackTrace();

@@ -82,7 +82,7 @@ public final class Main {
                     mathBot.add(Double.parseDouble(arguments[1]),
                         Double.parseDouble(arguments[2])));
               } else {
-                System.out.println("Input length does not meet requirement");
+                System.out.println("ERROR: Input length does not meet requirement");
               }
               break;
 
@@ -92,7 +92,7 @@ public final class Main {
                 System.out.println(mathBot.subtract(Double.parseDouble(arguments[1]),
                     Double.parseDouble(arguments[2])));
               } else {
-                System.out.println("Input length does not meet requirement");
+                System.out.println("ERROR: Input length does not meet requirement");
               }
               break;
 
@@ -102,7 +102,7 @@ public final class Main {
                 stars.csvReader(arguments[1]);
                 System.out.println("Reading stars from" + arguments[1]);
               } else {
-                System.out.println("Input length does not meet requirement");
+                System.out.println("ERROR: Input length does not meet requirement");
               }
               break;
             default:
@@ -110,7 +110,7 @@ public final class Main {
           }
 
         } catch (Exception e) {
-          // e.printStackTrace();
+          e.printStackTrace();
           System.out.println("ERROR: We couldn't process your input");
         }
       }
