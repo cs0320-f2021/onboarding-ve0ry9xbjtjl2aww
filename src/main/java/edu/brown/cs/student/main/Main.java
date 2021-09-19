@@ -60,16 +60,55 @@ public final class Main {
       runSparkServer((int) options.valueOf("port"));
     }
 
-    // TODO: Add your REPL here!
+
     try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
       String input;
+      //Pull MathBot
+      MathBot mathBot = new MathBot();
+      //Pull Stars
+      Stars stars = new Stars();
       while ((input = br.readLine()) != null) {
         try {
           input = input.trim();
           String[] arguments = input.split(" ");
-          System.out.println(arguments[0]);
-          // TODO: complete your REPL by adding commands for addition "add" and subtraction
-          //  "subtract"
+
+          //allow user command
+          switch (arguments[0]) {
+
+            //part 5 of lab
+            case "add":
+              if (arguments.length == 3) {
+                System.out.println(
+                    mathBot.add(Double.parseDouble(arguments[1]),
+                        Double.parseDouble(arguments[2])));
+              } else {
+                System.out.println("Input length does not meet requirement");
+              }
+              break;
+
+              //part 5 of lab
+            case "subtract":
+              if (arguments.length == 3) {
+                System.out.println(mathBot.subtract(Double.parseDouble(arguments[1]),
+                    Double.parseDouble(arguments[2])));
+              } else {
+                System.out.println("Input length does not meet requirement");
+              }
+              break;
+
+              //CSVReader
+            case "stars":
+              if (arguments.length == 2) {
+                stars.csvReader(arguments[1]);
+                System.out.println("Reading stars from" + arguments[1]);
+              } else {
+                System.out.println("Input length does not meet requirement");
+              }
+              break;
+            default:
+              System.out.println(arguments[0]);
+          }
+
         } catch (Exception e) {
           // e.printStackTrace();
           System.out.println("ERROR: We couldn't process your input");
@@ -151,3 +190,4 @@ public final class Main {
     }
   }
 }
+
